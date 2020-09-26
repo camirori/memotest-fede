@@ -1,0 +1,31 @@
+<div style="text-align:center">
+    <h1>
+        Memotest
+    </h1>
+</div>
+<div class="containerInicio" class="centrarItem">
+    <!--Juego-->
+    <div class="grilla">
+    <mat-grid-list cols="8" rowHeight="8:7">
+        <mat-grid-tile
+            *ngFor="let tile of tiles"
+            [colspan]="tile.cols"
+            [rowspan]="tile.rows"
+            >
+            <button *ngIf="tile.mostrar" class="celda" 
+                [disabled]="true" 
+                [style.background-image]="tile.img"></button>
+            <button *ngIf="!tile.mostrar" class="celda opcion" 
+                [disabled]="!habilitarOpciones" 
+                (click)="elegir(tile.numero)"></button>
+        </mat-grid-tile>
+    </mat-grid-list>
+    </div>
+
+    <!--Resultado-->
+    <div *ngIf="mensaje!=undefined" class="centro">
+        <label >{{mensaje}}</label>
+    </div> 
+
+    <button class="centrarItem" style="left: 5%;" mat-raised-button (click)="nuevoJuego()">Nueva partida</button>
+</div>
